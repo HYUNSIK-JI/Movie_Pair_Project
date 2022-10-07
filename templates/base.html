@@ -13,14 +13,16 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     {% load static %}
-    <nav class="navbar bg-light">
+    <nav class="navbar shadow-sm bg-white">
       <div class="container-fluid">
         <a href="{% url 'Reviews:index' %}"><img src="{% static 'Reviews/MOVIE.png' %}" width="100"></a>
         <a class="navbar-brand" href="{% url 'Reviews:index' %}">영화</a>
-        <a href="{% url 'Reviews:create' %}" type="button" class="btn btn-outline-danger btn-lg">작성</a>
+        <a href="{% url 'Reviews:create' %}" type="button" class="btn btn-sm btn-outline-primary btn-lg">작성</a>
       </div>
     </nav>
-    {% block content %}{% endblock %}
+    <div class="container mt-5">
+      {% block content %}{% endblock %}
+    </div>
   </body>
 
 </html>

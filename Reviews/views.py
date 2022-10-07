@@ -1,14 +1,21 @@
 from django.shortcuts import render,redirect
 from .models import Review
 from .forms import ReviewForm
+from django.core.paginator import Paginator
 # Create your views here.
 
 def index(request):
-    k = Review.objects.all()
-    context = {
-        "v":k
-    }
-    return render(request,"Reviews/index.html", context)
+    # k = Review.objects.all()
+    # context = {
+    #     "v":k
+    # }
+    # return render(request,"Reviews/index.html", context)
+
+    all_boards = Review.objects.all().order_by('id')
+    page = int(request.GET.get('p', 1))
+    pagenator = Paginator(all_boards, 5)
+    boards = pagenator.get_page(page)
+    return render(request, 'Reviews/index.html', {"boards":boards,"v":all_boards})
 
 def create(request):
     if request.method == "POST":

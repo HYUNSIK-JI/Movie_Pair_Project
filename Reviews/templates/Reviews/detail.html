@@ -3,16 +3,31 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 {% block content %}
-  {{v.title}}
-  {{v.content}}
-  {{v.movie_name}}
-  {{v.grade}}
-  {{v.created_at}}
-  {{v.updated_at}}
-  <button>
-    <a href="{% url 'Reviews:delete' v.pk %}">삭제</a>
-  </button>
-  <button>
-    <a href="{% url 'Reviews:update' v.pk %}">수정</a>
-  </button>
+<nav class="navbar">
+  <div class="container p-0">
+    <h3 class="m-0">{{v.title}}</h3>
+    <div class="">
+      <ul class="navbar-nav flex-row ">
+        <li class="nav-item">
+          <a class="mx-1 nav-link">{{v.created_at|date:'Y-m-d'}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="mx-1 nav-link">{{v.updated_at|date:'Y-m-d'}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <hr>
+  <p class="mb-5">{{v.content}}</p>
+  <div class="d-flex justify-content-between">
+    <div class="">
+      <span class="align-middle fw-bold">{{v.movie_name}}</span>
+      <span class="align-middle fw-bold p-2 rounded" style="background-color: rgb(255, 219, 40); ">⭐️{{v.grade}}</span>
+    </div>
+    <div>
+      <a class="btn btn-danger" href="{% url 'Reviews:delete' v.pk %}">삭제</a>
+      <a class="btn btn-primary" href="{% url 'Reviews:update' v.pk %}">수정</a>
+    </div>
+  </div>
 {% endblock %}

@@ -5,6 +5,6 @@ class Review(models.Model):
     title=models.CharField(max_length=30)
     content=models.TextField()
     movie_name=models.TextField()
-    grade=models.TextField(max_length=5)
+    grade=models.FloatField()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now = True)
