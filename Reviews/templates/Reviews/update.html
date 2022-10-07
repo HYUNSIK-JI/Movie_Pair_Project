@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block content %}
+  <form action="{% url 'Reviews:update' v.pk %}" method="POST" class="form">
+    {% csrf_token %}
+    {% bootstrap_form Review_Form %}
+
+    <input type="submit" value="수정">
+  </form>
+{% endblock %}
