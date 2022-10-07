@@ -4,10 +4,23 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
     <title>Document</title>
   </head>
 
-  <body></body>
+  <body>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <nav class="navbar bg-light">
+      <div class="container-fluid">
+        <a href="{% url 'Reviews:index' %}"><img src="{% static 'Reviews/MOVIE.png' %}" width="100"></a>
+        <a class="navbar-brand" href="{% url 'Reviews:index' %}">영화</a>
+        <a href="{% url 'Reviews:create' %}" type="button" class="btn btn-outline-danger btn-lg">작성</a>
+      </div>
+    </nav>
+    {% block content %}{% endblock %}
+  </body>
 
 </html>

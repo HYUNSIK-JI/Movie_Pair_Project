@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block content %}
+  {{v.title}}
+  {{v.content}}
+  {{v.movie_name}}
+  {{v.grade}}
+  {{v.created_at}}
+  {{v.updated_at}}
+  <button>
+    <a href="{% url 'Reviews:delete' v.pk %}">삭제</a>
+  </button>
+  <button>
+    <a href="{% url 'Reviews:update' v.pk %}">수정</a>
+  </button>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block content %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">번호</th>
+        <th scope="col">리뷰 제목</th>
+        <th scope="col">영화 이름</th>
+        <th scope="col">평점</th>
+        <th scope="col">작성일</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in v %}
+        <tr>
+          <th scope="row">{{i.pk}}</th>
+          <td>
+            <a href="{% url 'Reviews:detail' i.pk%}">{{i.title}}</a>
+          </td>
+          <td>{{i.movie_name}}</td>
+          <td>{{i.grade}}</td>
+          <td>{{i.created_at}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
